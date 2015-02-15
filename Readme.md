@@ -1,0 +1,3 @@
+# FizzBuzz Coding Dojo
+
+Some playing around with tests and various strange ideas. Implements the fizzbuzz in funny ways...
