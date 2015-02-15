@@ -1,19 +1,26 @@
 
-#import pytest
+import pytest
 
 from fizzbuzz.basic import fizzbuzz as basic_fizzbuzz
 
 
-def fizzbuzz_check(fizzbuzz):
-    for i in range(100):
-        result = fizzbuzz(i)
-        if i % 3 == 0:
-            assert 'Fizz' in result
-        if i % 5 == 0:
-            assert 'Buzz' in result
+algorithms = [basic_fizzbuzz]
+
+
+@pytest.mark.parametrize('algo', algorithms)
+def test_check_three(algo):
+    for i in range(3, 100, 3):
+        assert 'Fizz' in algo(i)
+
+
+@pytest.mark.parametrize('algo', algorithms)
+def test_check_fives(algo):
+    for i in range(5, 100, 5):
+        assert 'Buzz' in algo(i)
+
+
+@pytest.mark.parametrize('algo', algorithms)
+def test_check_numbers(algo):
+    for i in range(1, 100):
         if i % 3 and i % 5:
-            assert int(result) == i
-
-
-def test_basic_fizzbuzz():
-    fizzbuzz_check(basic_fizzbuzz)
+            assert int(algo(i)) == i
