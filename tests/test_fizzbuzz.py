@@ -1,10 +1,11 @@
 
 import pytest
 
-from fizzbuzz.basic import fizzbuzz as basic_fizzbuzz
+from fizzbuzz.basic import fizzbuzz as basic
+from fizzbuzz.no_if import fizzbuzz as no_if
 
 
-algorithms = [basic_fizzbuzz]
+algorithms = [basic, no_if]
 
 
 @pytest.mark.parametrize('algo', algorithms)
